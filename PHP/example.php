@@ -12,7 +12,7 @@ class Fapi
     public static function getObjectList($number, $ui) {
         $curl = curl_init(); // Инициализируем запрос
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://fapi.iisis.ru/fapi/v2/analogList?n='.$number.'&ui=' . ui, // Полный адрес метода
+            CURLOPT_URL => 'http://fapi.iisis.ru/fapi/v2/analogList?n='.$number.'&ui=' . $ui, // Полный адрес метода
             CURLOPT_RETURNTRANSFER => true, // Возвращать ответ
             CURLOPT_POST => false,
         ));
@@ -26,7 +26,9 @@ class Fapi
 
 }
 
- $result =  Fapi::getObjectList('w753');
+$number = "w753";
+$ui = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+$result =  Fapi::getObjectList($number, $ui);
 
 foreach ($result->analogList->a as  $row){
     echo '<pre>';
